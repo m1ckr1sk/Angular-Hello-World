@@ -2,12 +2,26 @@ html,body{margin:0;padding:0}
 body{font: 76% arial,sans-serif;text-align:center}
 p{margin:0 10px 10px}
 a{padding:5px; text-decoration:none; color:#000000;}
-div#header{background-color:#F3F2ED;}
-div#header h1{height:80px;line-height:80px;margin:0;padding-left:10px;}
+button{border-radius: 25px;
+    background-color: #BFBD93;
+    border: 1px solid #BFBD93;
+    color: #ffffff;
+    font-size: 1.3em;
+    padding: 0.5em 1em;}
+div#header{background-color:#BFBD93;}
+div#header h1{height:80px;line-height:80px;margin:0;padding-left:10px;color: #ffffff}
 div#container{text-align:left}
 div#content p{line-height:1.4}
 div#content input{padding-left:2px;margin:15px}
-div#navigation{background:#F6F0E0;}
+div#article p{ font-size: 15px;
+    color: #ffffff;
+    background-color: #BFBD93;
+    height: 30px;
+    margin-left: 0;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 5px;}
+div#navigation{background:#CCC8B3;}
 div#navigation ul{margin:15px 0; padding:0; list-style-type:none;}
 div#navigation li{margin-bottom:5px;}
 div#extra{background:#CCC8B3;}
@@ -18,3 +32,4 @@ div#content{float:right;width:500px;}
 div#navigation{float:left;width:200px}
 div#extra{float:left;clear:left;width:200px}
 div#footer{clear:both;width:100%}
+

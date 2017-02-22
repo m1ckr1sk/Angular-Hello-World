@@ -1,2 +1,2 @@
-# AngularHelloWorld
+# Angular Hello World
 Short AngularJS tutorial

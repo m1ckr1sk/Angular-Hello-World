@@ -9,7 +9,7 @@
 <body ng-controller="articleCtrl">
   <div id="container">
     <div id="header">
-      <h1><a href="http://www.free-css.com/free-css-layouts.php">Angular Article Tutorial</a></h1>
+      <h1>Angular Article Tutorial</h1>
     </div>
     <div id="wrapper">
       <div id="content">
@@ -21,14 +21,19 @@
           <input type="text" ng-model="numArticles" />
 
         <div ng-repeat="article in articles | limitTo:numArticles">
+          <div id="article">
           <p>{{article.title}}</p>
+          </div>
+          <div id="categories">
           <label ng-repeat="category in categories">
         <input type="checkbox" 
           ng-checked="containsCategory(article, category)" 
           ng-click="toggleCategory(article, category)" />
         {{category}}
       </label>
-          <span>Percentage of categories used: {{categoryPercentage}}</span>
+      </div>
+      <hr />
+          <p>Percentage of categories used: {{categoryPercentage}}</p>
         </div>
       </div>
     </div>
