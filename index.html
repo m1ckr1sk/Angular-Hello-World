@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="udemyAdmin">
+
+<head>
+  <title>Udemy tutorials - admin area</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body ng-controller="articleCtrl">
+  <div id="container">
+    <div id="header">
+      <h1><a href="http://www.free-css.com/free-css-layouts.php">Angular Article Tutorial</a></h1>
+    </div>
+    <div id="wrapper">
+      <div id="content">
+        <input type="text" ng-model="newTitle" placeholder="Enter article name..." />
+        <button name="Add" ng-click="addArticle()">Add</button>
+
+        <hr /> 
+        <p>Number of articles to display: </p>
+          <input type="text" ng-model="numArticles" />
+
+        <div ng-repeat="article in articles | limitTo:numArticles">
+          <p>{{article.title}}</p>
+          <label ng-repeat="category in categories">
+        <input type="checkbox" 
+          ng-checked="containsCategory(article, category)" 
+          ng-click="toggleCategory(article, category)" />
+        {{category}}
+      </label>
+          <span>Percentage of categories used: {{categoryPercentage}}</span>
+        </div>
+      </div>
+    </div>
+    <div id="navigation">
+      <p><strong>Tutorial Links</strong></p>
+      <ul>
+       <li><a href="https://blog.udemy.com/angularjs-tutorial/">Angular Tutorial</a></li>
+         <li><a href="https://angularjs.org/">Angular JS</a></li>
+      </ul>
+    </div>
+    <div id="extra">
+      <p><strong>Article Manager Tutorial</strong></p>
+      <p>This is a small angular demo using the $httpbackend to mock out rest calls.</p>
+    </div>
+    <div id="footer">
+      <p>Mike Butt</p>
+    </div>
+  </div>
+
+
+  <script src="angular.js"></script>
+  <script src="angular-resource.js"></script>
+  <script src="angular-mocks.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers.js"></script>
+  <script src="services.js"></script>
+</body>
+
+</html>
