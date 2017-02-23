@@ -1,46 +1,55 @@
-angular.module('udemyAdmin').controller('articleCtrl', function($scope, calculateCategoryPercentage, pageSize, availableCategories, $resource) {
+angular.module('udemyAdmin')
+  .controller('articleCtrl', function ($scope, calculateCategoryPercentage, pageSize, availableCategories, $resource) {
 
-  var Article = $resource('/articles');
+    var Article = $resource('/articles');
 
-  $scope.categories = [];
+    $scope.categories = [];
 
-  availableCategories.then(function(categories) {
-    Array.prototype.splice.apply(
-      $scope.categories,
-      [$scope.categories.length, 0].concat(categories)
-    );
-  });  
-
-  $scope.articles = Article.query();
-
-  $scope.$watch('articles', function(articles) {
-    calculateCategoryPercentage(articles).then(function(percentage) {
-      $scope.categoryPercentage = percentage;
+    availableCategories.then(function (categories) {
+      Array.prototype.splice.apply(
+        $scope.categories,
+        [$scope.categories.length, 0].concat(categories)
+      );
     });
-  }, true);
 
-  $scope.containsCategory = function(article, category) {
-    return article.categories.indexOf(category) >= 0;
-  };
+    $scope.articles = Article.query();
 
-  $scope.toggleCategory = function(article, category) {
-    var index = article.categories.indexOf(category);
+    $scope.$watch('articles', function (articles) {
+      calculateCategoryPercentage(articles).then(function (percentage) {
+        $scope.categoryPercentage = percentage;
+      });
+    }, true);
 
-    if (index == -1) {
-      article.categories.push(category);
-    } else {
-      article.categories.splice(index, 1);
-    }
-  };
+    $scope.containsCategory = function (article, category) {
+      return article.categories.indexOf(category) >= 0;
+    };
 
-  $scope.newTitle = '';
+    $scope.toggleCategory = function (article, category) {
+      var index = article.categories.indexOf(category);
 
-  $scope.addArticle = function() {
-   var newArticle = new Article({ title: $scope.newTitle });
-    newArticle.$save().then(function(article) {
-      $scope.articles.push(article);
-    });
-  };
+      if (index == -1) {
+        article.categories.push(category);
+      } else {
+        article.categories.splice(index, 1);
+      }
+    };
 
-  $scope.numArticles = pageSize;
-});  
+    $scope.newTitle = '';
+
+    $scope.addArticle = function () {
+      var newArticle = new Article({ title: $scope.newTitle });
+      newArticle.$save().then(function (article) {
+        $scope.articles.push(article);
+      });
+    };
+
+    $scope.numArticles = pageSize;
+  })
+  .controller('MapController', function (esriLoader) {
+    var self = this;
+    esriLoader.require(['esri/Map'], function (Map) {
+      self.map = new Map({
+        basemap: 'streets'
+      })
+    })
+  });

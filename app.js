@@ -1,4 +1,4 @@
-angular.module('udemyAdmin', ['ngResource', 'ngMockE2E']).run(function($httpBackend) {
+angular.module('udemyAdmin', ['ngResource', 'esri.map', 'ngMockE2E']).run(function($httpBackend) {
   $httpBackend.whenGET('/categories').respond(['tutorial', 'hardware', 'graphics']);
 
 var articles = [

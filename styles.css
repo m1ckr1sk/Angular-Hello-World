@@ -32,4 +32,8 @@ div#content{float:right;width:500px;}
 div#navigation{float:left;width:200px}
 div#extra{float:left;clear:left;width:200px}
 div#footer{clear:both;width:100%}
+div#footer p{color: #ffffff;}
+.esri-view {
+  height: 400px;
+}
 

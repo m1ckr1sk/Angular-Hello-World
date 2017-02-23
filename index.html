@@ -3,7 +3,10 @@
 
 <head>
   <title>Udemy tutorials - admin area</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.2/esri/css/main.css">
 </head>
 
 <body ng-controller="articleCtrl">
@@ -16,32 +19,37 @@
         <input type="text" ng-model="newTitle" placeholder="Enter article name..." />
         <button name="Add" ng-click="addArticle()">Add</button>
 
-        <hr /> 
+        <hr />
         <p>Number of articles to display: </p>
-          <input type="text" ng-model="numArticles" />
+        <input type="text" ng-model="numArticles" />
 
         <div ng-repeat="article in articles | limitTo:numArticles">
           <div id="article">
-          <p>{{article.title}}</p>
+            <p>{{article.title}}</p>
           </div>
           <div id="categories">
-          <label ng-repeat="category in categories">
+            <label ng-repeat="category in categories">
         <input type="checkbox" 
           ng-checked="containsCategory(article, category)" 
           ng-click="toggleCategory(article, category)" />
         {{category}}
       </label>
-      </div>
-      <hr />
+          </div>
+          <hr />
           <p>Percentage of categories used: {{categoryPercentage}}</p>
+          <hr />
+        <div ng-controller="MapController as vm">
+            <esri-scene-view map="vm.map" view-options="{scale: 50000000, center: [-101.17, 21.78]}">
+            </esri-scene-view>
+          </div>
         </div>
       </div>
     </div>
     <div id="navigation">
       <p><strong>Tutorial Links</strong></p>
       <ul>
-       <li><a href="https://blog.udemy.com/angularjs-tutorial/">Angular Tutorial</a></li>
-         <li><a href="https://angularjs.org/">Angular JS</a></li>
+        <li><a href="https://blog.udemy.com/angularjs-tutorial/">Angular Tutorial</a></li>
+        <li><a href="https://angularjs.org/">Angular JS</a></li>
       </ul>
     </div>
     <div id="extra">
@@ -52,14 +60,19 @@
       <p>Mike Butt</p>
     </div>
   </div>
+  
 
-
+  <script src="https://js.arcgis.com/4.2/"></script>
   <script src="angular.js"></script>
+  <script src="angular-esri-core.js"></script>
+  <script src="angular-esri-map.js"></script>
   <script src="angular-resource.js"></script>
   <script src="angular-mocks.js"></script>
   <script src="app.js"></script>
   <script src="controllers.js"></script>
   <script src="services.js"></script>
+
+
 </body>
 
 </html>
