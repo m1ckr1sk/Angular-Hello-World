@@ -35,13 +35,14 @@
         {{category}}
       </label>
           </div>
-          <hr />
-          <p>Percentage of categories used: {{categoryPercentage}}</p>
-          <hr />
+        </div>
+        <hr />
+        <p>Percentage of categories used: {{categoryPercentage}}</p>
+        <hr />
+        <p>Library locations in the UK: </p>
         <div ng-controller="MapController as vm">
-            <esri-scene-view map="vm.map" view-options="{scale: 250000, center: [-1.584, 50.857]}">
-            </esri-scene-view>
-          </div>
+          <esri-scene-view map="vm.map" view-options="{scale: 250000, center: [-1.584, 50.857]}">
+          </esri-scene-view>
         </div>
       </div>
     </div>
@@ -60,7 +61,7 @@
       <p>Mike Butt</p>
     </div>
   </div>
-  
+
 
   <script src="https://js.arcgis.com/4.2/"></script>
   <script src="angular.js"></script>

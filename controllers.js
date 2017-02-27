@@ -47,14 +47,24 @@ angular.module('udemyAdmin')
   })
   .controller('MapController', function (esriLoader) {
     var self = this;
-    esriLoader.require(['esri/Map', 'esri/layers/FeatureLayer'], function (Map, FeatureLayer) {
+    esriLoader.require(['esri/Map', 'esri/PopupTemplate', 'esri/layers/FeatureLayer'], function (Map, PopupTemplate, FeatureLayer) {
       self.map = new Map({
         basemap: 'streets'
       });
 
+      var template = new PopupTemplate({
+        title: 'Details for {TITLE}',
+        content: '<p>Website: <b>{WEBSITE}%</b></p><hr/>' + 
+        '<p>{STREET_ADDRESS}</p><p>{TOWN}</p>' + 
+        '<p>{POSTCODE}</p>',
+        fieldInfos: []
+      });
+
       // and add a feature layer
       var featureLayer = new FeatureLayer({
-        url: 'https://services1.arcgis.com/vSbe3sPEi5Yt58Vd/arcgis/rest/services/Libraries_in_the_UK/FeatureServer/0'
+        url: 'https://services1.arcgis.com/vSbe3sPEi5Yt58Vd/arcgis/rest/services/Libraries_in_the_UK/FeatureServer/0',
+        outFields: ['*'],
+        popupTemplate: template
       });
 
       self.map.add(featureLayer);
