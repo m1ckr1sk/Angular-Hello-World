@@ -47,9 +47,16 @@ angular.module('udemyAdmin')
   })
   .controller('MapController', function (esriLoader) {
     var self = this;
-    esriLoader.require(['esri/Map'], function (Map) {
+    esriLoader.require(['esri/Map', 'esri/layers/FeatureLayer'], function (Map, FeatureLayer) {
       self.map = new Map({
         basemap: 'streets'
-      })
+      });
+
+      // and add a feature layer
+      var featureLayer = new FeatureLayer({
+        url: 'https://services1.arcgis.com/vSbe3sPEi5Yt58Vd/arcgis/rest/services/Libraries_in_the_UK/FeatureServer/0'
+      });
+
+      self.map.add(featureLayer);
     })
   });
